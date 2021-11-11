@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Email validation check</title>
+  </head>
+  <body>
+    <h1>Email validation check</h1>
+    <form id="form" action="#">
+      <div class="inputBox">
+        <input
+          type="text"
+          name=""
+          id="email"
+          placeholder="E-mail"
+          onkeydown="validation()"
+        />
+        <span id="text"></span>
+      </div>
+    </form>
+  </body>
+  <script type="text/javascript">
+    function validation() {
+      const form = document.getElementById("form");
+      const email = document.getElementById("email").value;
+      const text = document.getElementById("text");
+      const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+      if (email.match(pattern)) {
+        form.classList.add("valid");
+        form.classList.remove("invalid");
+        text.innerHTML = "Your Email address in valid";
+        text.style.color = "#00ff00";
+      } else {
+        form.classList.remove("valid");
+        form.classList.add("invalid");
+        text.innerHTML = "please Enter Valid Email Address";
+        text.style.color = "#ff0000";
+      }
+      if (email == "") {
+        form.classList.remove("valid");
+        form.classList.remove("invalid");
+        text.innerHTML = "";
+        text.style.color = "#00ff00";
+      }
+    }
+  </script>
+</html>
